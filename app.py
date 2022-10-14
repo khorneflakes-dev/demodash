@@ -1,3 +1,4 @@
+from distutils.log import debug
 import pandas as pd
 from dash import dash, dcc, html, ctx
 import plotly_express as px
@@ -25,4 +26,4 @@ def display_value(value):
     return f'You have selected {value}'
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=os.getenv('PORT', default=5000))
