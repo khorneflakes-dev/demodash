@@ -26,4 +26,4 @@ def display_value(value):
     return f'You have selected {value}'
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=os.getenv('PORT', default=5000))
+    app.run_server(debug=True, port=8051)
