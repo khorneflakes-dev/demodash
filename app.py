@@ -1,13 +1,10 @@
-from distutils.log import debug
-import pandas as pd
-from dash import dash, dcc, html, ctx
-import plotly_express as px
-from dash.dependencies import Input, Output
-import plotly.graph_objects as go
+from dash import Dash, dcc, html, Input, Output
 import os
 
 
-app = dash.Dash(__name__)
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
@@ -26,4 +23,4 @@ def display_value(value):
     return f'You have selected {value}'
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8051)
+    app.run_server(debug=True)
