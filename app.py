@@ -58,6 +58,7 @@ agrupado_ordenes_hora = ordenes_hora.groupby(['quantity'],as_index=False).agg({'
 
 app = Dash(__name__)
 
+app.title = 'Platos Pizza'
 server = app.server
 
 app.layout = html.Div([
