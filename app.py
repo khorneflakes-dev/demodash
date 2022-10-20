@@ -536,7 +536,6 @@ def revenue_per_month(value, clk_data):
     colors = ['#E5B028']*12
     if clk_data != None:
         clk = clk_data['points'][0]['label']
-        print(clk)
         list_dias = data['month'].tolist()
         colors[list_dias.index(clk)] = '#252525'
     data_graph = [go.Bar(
