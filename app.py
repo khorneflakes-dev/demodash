@@ -526,18 +526,24 @@ def graph_horas(clk_data):
 @app.callback(
     Output('revenue-per-month', component_property='figure'),
     [Input('dias-aux', component_property='value')],
-    [Input('dias-aux', component_property='value')]
+    [Input('revenue-per-month', component_property='clickData')]
 )
 
-def revenue_per_month(value, value2):
+def revenue_per_month(value, clk_data):
     data = aux3.groupby(['month'], as_index=False).agg({'total_price': 'sum'})
     data = data.sort_values(['total_price'], ascending=True)
     data['month'] = data['month'] + '   '
+    colors = ['#E5B028']*12
+    if clk_data != None:
+        clk = clk_data['points'][0]['label']
+        print(clk)
+        list_dias = data['month'].tolist()
+        colors[list_dias.index(clk)] = '#252525'
     data_graph = [go.Bar(
         y = data['month'],
         x = data['total_price'],
         orientation='h',
-        marker_color=['#E5B028']*len(data),
+        marker_color=colors,
         text=data['total_price'],
         texttemplate='%{text:,.0f}',
         textfont_size=60,
